@@ -44,4 +44,4 @@ p=maxPrimeFactors(gcd)
 if(l[0]%p!=0 and l[len(l)-1]%(p*p)!=0):
     print('The given polynomial is irreducible by Eisentein Criteria.' )
 else:
-    print('The given polynomial is reducible by Eisentein Criteria.' )
+    print('The given polynomial is not irreducible by Eisentein Criteria.' )
