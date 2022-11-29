@@ -1,0 +1,110 @@
+import math
+import fractions
+
+#function finding gcd of 2 no.
+def find_gcd(x, y):
+    while(y):
+        x, y = y, x % y
+  
+    return x
+      
+
+      
+#function for finding highest prime factor of gcd
+def maxPrimeFactors (n):
+    maxPrime = -1
+    while n % 2 == 0:
+        maxPrime = 2
+        n >>= 1
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
+        while n % i == 0:
+
+            maxPrime = i
+            n = n / i
+
+    if n > 2:
+        maxPrime = n
+      
+    return int(maxPrime)
+
+
+      
+l = [1,0,1]
+    
+num1=l[1]
+num2=l[2]
+gcd=find_gcd(num1,num2)
+
+
+#to find the gcd of list 
+for i in range(3,len(l)-1):
+    gcd=find_gcd(gcd,l[i])
+
+
+
+def prime_factors(num):
+    p=[]
+    # Using the while loop, we will print the number of two's that divide n  
+    while num % 2 == 0:  
+        p.append(2) 
+        num = num / 2  
+  
+    for i in range(3, int(math.sqrt(num)) + 1, 2):  
+  
+        # while i divides n , print i ad divide n  
+        while num % i == 0:  
+            p.append(i)  
+            num = num / i  
+    if num > 2:  
+        p.append(num)
+    return p
+
+  
+#function for prime factor
+def fact(num):
+    factors=[]
+    for i in range(1,num+1):
+        if num%i==0:
+            factors.append(i)
+    return factors       
+
+
+def checkpq(p1,p2):
+    check=0
+    for i in range(0,len(p1)):
+        for j in range(0,len(p2)):
+            temp=[]
+            f1=fractions.Fraction(p1[i])
+            f2=fractions.Fraction(p2[j])
+            x=f1/f2
+            for q in range(-1,2,2):
+                x2=x*q
+                temp=[]
+                for k in range(0,len(l)):
+                    x1=1
+                    for m in range(1,k+1):
+                        x1=x1*x2
+                    temp.append(l[k]*x1)
+                sum=0
+                for k in range(0,len(temp)):
+                    sum=sum+temp[k]
+                
+                if(sum==0):
+                    print("at ",x2,"polynomial equals 0")
+                    check=1
+
+    if(check!=1):
+        print('The given polynomial is irreducible.' )
+    else:
+        print('The given polynomial is reducible.' )
+    
+            
+p1=[]
+p2=[]
+p1=fact(l[0])  
+p2=fact(l[len(l)-1])
+
+p=maxPrimeFactors(gcd)
+
+print("We get that,")
+checkpq(p1,p2)
