@@ -8,7 +8,6 @@ def find_gcd(x, y):
   
     return x
       
-
       
 #function for finding highest prime factor of gcd
 def maxPrimeFactors (n):
@@ -29,12 +28,12 @@ def maxPrimeFactors (n):
 
 
       
-l = [1,0,1]
+l = [-1,7,4,1]
     
 num1=l[1]
-num2=l[2]
+num2=l[len(l)-2]
 gcd=find_gcd(num1,num2)
-
+root=[]
 
 #to find the gcd of list 
 for i in range(3,len(l)-1):
@@ -88,11 +87,10 @@ def checkpq(p1,p2):
                 sum=0
                 for k in range(0,len(temp)):
                     sum=sum+temp[k]
-                
                 if(sum==0):
-                    print("at ",x2,"polynomial equals 0")
+                    print("at ",x2,"polynomial equals 0. Therefore,")
                     check=1
-
+	
     if(check!=1):
         print('The given polynomial is irreducible.' )
     else:
@@ -101,8 +99,9 @@ def checkpq(p1,p2):
             
 p1=[]
 p2=[]
-p1=fact(l[0])  
-p2=fact(l[len(l)-1])
+p1=fact(abs(l[0]))  
+p2=fact(abs(l[len(l)-1]))
+
 
 p=maxPrimeFactors(gcd)
 
